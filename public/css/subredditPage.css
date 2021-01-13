@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    
+}
+
+body {
+    overflow-x: hidden;
+    background-color:#393e46;
+}
+
+::-webkit-scrollbar {
+    width: 0px;  
+    background: transparent; 
+}
+
+/**/
+.subreddit-card{
+    margin: auto;
+    height: 10rem;
+    width: 65%;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background: #222831;
+    border-radius: 25px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: row;
+    transition: .3s;
+    color: #ffd369;
+   
+}
+
+.subreddit-card:hover{
+    transform: scale(1.02);
+    background-color: #ffd369;
+    color: white;  
+}
+
+a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: #222831;
+}
+
+
+.vertical-line{
+    border: 1px solid rgb(107, 107, 107);
+    opacity: 25%;
+    width: 0px;
+    height: 10rem;
+}
+
+.title-text{
+    margin: 0px auto;
+    display: flex;
+    flex-grow: 2;
+    align-items: center;
+    justify-content: center;
+}
+
+.description-text{
+    flex-grow: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.circle{
+    background: #222831;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 20px 10px 40px;
+    transition: .3s;
+    
+}
+
+.circle-show{
+    background: #F2F2F2;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 50%;
+    height: 120px;
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    transition: .3s;
+}
+
+.circle-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    height: 130px;
+    width: 130px;
+}
+
+.explore-div{
+    display: none;
+}
+
+.subreddit-card:hover > .title-text, 
+.subreddit-card:hover > .description-text, 
+.subreddit-card:hover > .vertical-line{
+    display: none;
+}
+
+.subreddit-card:hover > .explore-div{
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.content{
+    margin-top: 170px;
+    transition: margin 700ms;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+
+
+

@@ -1,0 +1,19 @@
+<% layout('layouts/boilerplate') %> 
+
+<div class="container">
+  <form action="/subreddits" method="POST">
+      <div class="mb-3">
+        <label for="title" class="form-lab">Title</label>
+        <input type="text" name="subreddit[title]" class="form-control" id="title">
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-lab">Description</label>
+        <textarea  class="form-control" name="subreddit[description]" id="description" cols="5" rows="3"></textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-lab" for="image">Banner Image (Input image URL, preferably a square image)</label>
+        <input type="text" name="subreddit[image]" class="form-control" id="image">
+      </div>
+      <button type="submit" class="btn btn-warning">Submit</button>
+  </form>
+</div>

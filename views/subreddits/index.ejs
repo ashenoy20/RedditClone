@@ -1,0 +1,23 @@
+<% layout('layouts/boilerplate') %> 
+
+<% for(let subreddit of allSubreddits){ %> 
+    <div class='row'>
+      <div class="circle">
+          <img src="<%= subreddit.image %> " alt="" class="circle-img">
+      </div>
+      <div class="subreddit-card">
+          <div class="title-text">
+              <h1><%= subreddit.title %> </h1>
+          </div>
+          <div class="explore-div" >
+              <h1><a href="/subreddits/<%= subreddit._id %>">Visit this subreddit</a></h1>
+          </div>
+          <div class="vertical-line"></div>
+          <div class="description-text">
+              <p><%= subreddit.description %> </p>
+          </div>
+      </div>  
+    </div>   
+<% } %> 
+
+

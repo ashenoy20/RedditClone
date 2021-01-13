@@ -1,0 +1,16 @@
+
+
+ <div class="navBar">
+    <div class="logo">
+        <img class="navbar-brand" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/55b47d98-207a-492d-b1b1-f26c507eb29f/d2nzvtu-a0dd186c-b410-42b6-a82c-21f6873f10ae.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvNTViNDdkOTgtMjA3YS00OTJkLWIxYjEtZjI2YzUwN2ViMjlmXC9kMm56dnR1LWEwZGQxODZjLWI0MTAtNDJiNi1hODJjLTIxZjY4NzNmMTBhZS5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.9eix1ckUpl4gWRSVYIp9rniXDujmD8aVzt8IkK6-_6U" style="width:64px; height:70px">RedditClone</img>
+    </div>
+    <div class="box home">Home</div>
+    <div class="box explore">Explore</div>
+    <% if(user){ %> 
+        <div class="box profile" onclick="goToProfile()"><%= user.username %> </div>
+    <% }else{ %> 
+        <div class="box login">Login</div>
+    <% } %> 
+    <div class="nav-vertical-line"></div>
+    <div class="button">&times;</div>   
+  </div>

@@ -1,0 +1,46 @@
+  canvas {
+    display: block;
+    /* vertical-align: bottom; */
+  }
+
+  body {
+    margin: 0;
+  }
+  
+  /* ---- particles.js container ---- */
+  
+.button2 {
+  display:inline-block;
+  padding:0.7em 1.4em;
+  margin:0 0.3em 0.3em 0;
+  border-radius:0.15em;
+  box-sizing: border-box;
+  text-decoration:none;
+  text-transform:uppercase;
+  font-weight:400;
+  color:#ffd369;
+  background-color:#393e46;
+  box-shadow:inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);
+  text-align:center;
+  border-radius: 15px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.button2:focus {
+   outline: none;
+}
+
+  #particles-js{
+    width: 100%;
+    height: 100%;
+    background-color: #393e46;
+    /* background-color: blueviolet; */
+    background-image: url('');
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    z-index: -1;
+  }  
+

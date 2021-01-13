@@ -1,0 +1,35 @@
+<% layout('layouts/boilerplate') %> 
+
+<div class="container">
+    <div class="card-static" >
+        <div class="circle-show">
+            <img src="<%= post.image %> " alt="Post Image" >
+        </div>
+        <div class=" ">
+        <h4 class=" "><%= post.title %> </h4>
+        <h5><%= post.user.username %> </h5>
+        <p class=" "><%= post.description %> </p>
+         <% if (user && post.user.equals(user)) { %>
+            <a href="/subreddits/<%= id %>/posts/<%= post._id %>/edit " class="btn btn-info">Edit</a>
+            <form action="/subreddits/<%= id %>/posts/<%= post._id %>?_method=DELETE" method="POST">
+                <button class="btn btn-danger">Delete</button>
+            </form>
+         <% } %> 
+       
+        <a href="#" class="btn btn-success">Comment</a>
+        </div>
+    </div>
+    <div>
+        <form action="/subreddits/<%= id %>/posts/<%= post._id %>" method="POST">
+            <label for="description">Leave a Comment</label>
+            <textarea name="comment[description]" id="description" cols="5" rows="3"></textarea>
+            <button>Submit</button>
+        </form>
+    </div>
+    <% for(let comment of post.comments) { %>
+        <div class="card-static">
+            <h1><%= comment.user.username %></h1>
+            <p><%= comment.description %>  </p>
+        </div>
+    <% } %>
+</div>
