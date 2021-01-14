@@ -30,7 +30,7 @@ var pJS = function(tag_id, params){
         value: '#ffd369'
       },
       shape: {
-        type: ['star'],
+        type: ['image'],
         stroke: {
           width: 0,
           color: '#222831'
@@ -39,7 +39,7 @@ var pJS = function(tag_id, params){
           nb_sides: 5
         },
         image: {
-          src: '',
+          src: 'https://img.itch.zone/aW1nLzQ3NDY4MjYucG5n/original/sDIDCt.png',
           width: 100,
           height: 100
         }

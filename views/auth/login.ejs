@@ -1,8 +1,25 @@
-<% layout('layouts/boilerplate') %> 
+<% layout('layouts/boilerplate') %>
+<link rel="stylesheet" href="/css/loginButton.css"> 
 
-<h1>Login</h1>
 
 <form action="/login" method="POST">
+    <h1>Login</h1>
+    <!-- Email input -->
+  <div class="form-outline mb-4">
+      <input class="form-control" type="text" id="username" name="username">
+      <label class="form-label" for="username">Username</label>
+  </div>
+
+  <!-- Password input -->
+  <div class="form-outline mb-4">
+    <input class="form-control" type="password" id="password" name="password">
+    <label class="form-label" for="password">Password</label>
+  </div>
+
+  <!-- Submit button -->
+  <button type="submit" data-hover="Sign in!"><div>Take me to RedditClone!</div></button>
+</form>
+<!-- <form action="/login" method="POST">
     <div class="mb-3">
         <label class="form-label" for="username">Username</label>
         <input class="form-control" type="text" id="username" name="username">
@@ -13,4 +30,4 @@
     </div>
     <button class="btn btn-warning">Login</button>
 
-</form>
+</form> -->
