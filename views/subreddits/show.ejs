@@ -1,25 +1,26 @@
 <% layout('layouts/boilerplate') %> 
 
-<div class="container">
+
     <div class="card-static" >
-        <div class="circle-show">
-            <img src="<%= subreddit.image %> " alt="Subreddit Banner" >
+        
+        <img class="circle-show"src="<%= subreddit.image %> " alt="Subreddit Banner" >
+        <div class="card-description">
+            <h4 class=" "><%= subreddit.title %> </h4>
+            <p style="opacity: .25;">By <%= subreddit.user.username %> </h5>
+            <h6 style="margin: 0px 10px 0px 10px;"><%= subreddit.description %> </h6>
         </div>
-        <div class=" ">
-        <h4 class=" "><%= subreddit.title %> </h4>
-        <h5><%= subreddit.user.username %> </h5>
-        <p class=" "><%= subreddit.description %> </p>
-         <% if (user && subreddit.user.equals(user)) { %>
+    <div class="card-options">
+        <% if (user && subreddit.user.equals(user)) { %>
             <a href="/subreddits/<%= subreddit._id %>/edit" class="btn btn-info">Edit</a>
             <form action="/subreddits/<%= subreddit._id %>?_method=DELETE" method="POST">
                 <button class="btn btn-danger">Delete</button>
-            </form>
+            </form>     
          <% } %> 
-       
-        <a href="/subreddits/<%= subreddit._id %>/posts/new " class="btn btn-success">Create a Post</a>
-        </div>
+        <a href="/subreddits/<%= subreddit._id %>/posts/new " class="btn btn-success">Create a Post</a>     
     </div>
-
+      
+    </div>
+    <div class="container">
     <% for(let post of subreddit.posts){ %>
         <div class="card-show">
             <div class=" ">

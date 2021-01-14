@@ -1,20 +1,22 @@
 <% layout('layouts/boilerplate') %> 
+<link rel="stylesheet" href="/css/authStyles.css"> 
 
-<h1>Register</h1>
+<div class="container authForm">
+    <h1>Register</h1>
+    <form action="/register" method="POST">
+        <div class="mb-3">
+            <label class="form-label" for="username">Username</label>
+            <input class="form-control" type="text" id="username" name="username">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="email">Email</label>
+            <input class="form-control" type="email" id="email" name="email">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="password">Password</label>
+            <input class="form-control" type="password" id="password" name="password">
+        </div>
+        <button type="submit" data-hover="Sign in!"><div>Take me to RedditClone!</div></button>
+    </form>
 
-<form action="/register" method="POST">
-    <div class="mb-3">
-        <label class="form-label" for="username">Username</label>
-        <input class="form-control" type="text" id="username" name="username">
-    </div>
-    <div class="mb-3">
-        <label class="form-label" for="email">Email</label>
-        <input class="form-control" type="email" id="email" name="email">
-    </div>
-    <div class="mb-3">
-        <label class="form-label" for="password">Password</label>
-        <input class="form-control" type="password" id="password" name="password">
-    </div>
-    <button class="btn btn-warning">Submit</button>
-
-</form>
+</div>

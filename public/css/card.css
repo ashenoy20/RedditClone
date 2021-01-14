@@ -32,26 +32,32 @@ a {
 
 
 .card-static {
-    height: 100%;
-    width: 100%;
-    min-width: 250px;
-    padding: 1.5rem;    
-    margin: auto;
-    scroll-snap-align: start;
-    clear: both;
-    position: relative;
-    border-radius: 12px;
-    transition: .3s;
-    margin-bottom: 25px;
-    border: 2px solid black;
+    height: fit-content;
+    width: 97%;
+    margin: 0px 25px 15px 25px;
+    border-radius: 25px;
+    background-color:  #222831;
+    color: #ffd369;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding-bottom: 2em;
 }
 
-.card-static img{
-    background-size: cover;
-    height: 100px;
-    width:100px;
-    border-radius: 100%;
+.card-description{
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 5em;
+    
 }
+
+.card-options{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    
+}
+
 
 .back-img{
     border-radius: 12px;

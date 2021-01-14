@@ -28,7 +28,7 @@ explore.addEventListener('click', () => {
 
 if(login){
   login.addEventListener('click', () => {
-    window.location.href = "/register"
+    window.location.href = "/login"
   })
 }
 
