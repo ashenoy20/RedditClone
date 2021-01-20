@@ -1,7 +1,7 @@
 <% layout('layouts/boilerplate') %> 
 
 <div class="container">
-  <form action="/subreddits" method="POST">
+  <form action="/subreddits" method="POST" enctype="multipart/form-data">
       <div class="mb-3">
         <label for="title" class="form-lab">Title</label>
         <input type="text" name="subreddit[title]" class="form-control" id="title">
@@ -12,7 +12,7 @@
       </div>
       <div class="mb-3">
         <label class="form-lab" for="image">Banner Image (Input image URL, preferably a square image)</label>
-        <input type="text" name="subreddit[image]" class="form-control" id="image">
+        <input type="file" name="image" id="image" accept="images/*" required >
       </div>
       <button type="submit" class="btn btn-warning">Submit</button>
   </form>

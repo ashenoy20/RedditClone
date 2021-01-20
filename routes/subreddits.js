@@ -1,11 +1,13 @@
 const express = require('express')
 const Subreddit = require('../models/subreddit')
-const Post = require('../models/post')
 const Comment = require('../models/comments')
 const catchAsyncError = require('../utils/catchAsyncError')
 const { subredditSchema } = require('../validatorSchema')
 const ExpressError = require('../utils/ExpressError')
 const {isAuth} = require('../utils/isAuth')
+const multer = require('multer')
+const {cloudinary, storage} = require('../cloudinary')
+const upload = multer({storage})
 
 
 const router = express.Router()
@@ -29,13 +31,18 @@ router.get('/new', isAuth, (req, res) => {
     res.render('subreddits/new')
 })
 
-router.post('/', isAuth, validSubreddit, catchAsyncError(async (req, res) => {
+
+
+router.post('/', isAuth, upload.single('image'), validSubreddit, catchAsyncError(async (req, res) => {
     const subreddit = new Subreddit(req.body.subreddit)
+    subreddit.image.url = req.file.path
+    subreddit.image.fileName = req.file.filename
     subreddit.user = req.session.user
     await subreddit.save()
     req.flash('success', 'New subreddit created!')
     res.redirect('/subreddits')
 }))
+
 
 router.get('/:id', catchAsyncError(async (req, res) => {
     const { id } = req.params
@@ -49,16 +56,22 @@ router.get('/:id', catchAsyncError(async (req, res) => {
     res.render('subreddits/show', { subreddit })
 }))
 
-router.get('/:id/edit', catchAsyncError(async (req, res) => {
+router.get('/:id/edit', isAuth, catchAsyncError(async (req, res) => {
     const { id } = req.params
     const subreddit = await Subreddit.findById(id)
     res.render('subreddits/edit', { subreddit })
 }))
 
 
-router.put('/:id', isAuth, validSubreddit, catchAsyncError(async (req, res) => {
+router.put('/:id', isAuth, upload.single('image'), validSubreddit, catchAsyncError(async (req, res) => {
     const { id } = req.params
-    await Subreddit.findByIdAndUpdate(id, {...req.body.subreddit})
+    const campground = await Subreddit.findByIdAndUpdate(id, {...req.body.subreddit})
+    if(req.file){
+        campground.image.url = req.file.path
+        cloudinary.uploader.destroy(campground.image.fileName)
+        campground.image.fileName = req.file.filename
+        await campground.save()
+    }
     req.flash('success', 'Subreddit updated!')
     res.redirect(`/subreddits/${id}`)
 }))
@@ -73,6 +86,7 @@ router.delete('/:id', isAuth, catchAsyncError(async (req, res) => {
             }
         })
     }
+    cloudinary.uploader.destroy(subreddit.image.fileName)
     await Subreddit.findByIdAndDelete(id)
     req.flash('success', 'Subreddit deleted!')
     res.redirect('/subreddits')

@@ -1,13 +1,15 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const Posts = require('./post')
-const Comment = require('./comments')
 
 
 const subredditSchema = new Schema({
     title: String,
     description: String,
-    image: String,
+    image: {
+        url: String, 
+        fileName: String
+    },
     user: {
         type: Schema.Types.ObjectId ,
         ref: 'User'

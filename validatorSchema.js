@@ -4,7 +4,6 @@ module.exports.subredditSchema = Joi.object({
     subreddit: Joi.object({
         title: Joi.string().required(),
         description: Joi.string().required(),
-        image: Joi.string().required()
     }).required()
 })
 

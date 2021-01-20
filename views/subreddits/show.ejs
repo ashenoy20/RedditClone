@@ -2,8 +2,7 @@
 
 
     <div class="card-static" >
-        
-        <img class="circle-show"src="<%= subreddit.image %> " alt="Subreddit Banner" >
+        <div style="height: 300px; background-image: url(<%=subreddit.image.url%>); border-radius: 25px 25px 0px 0px;"></div>
         <div class="card-description">
             <h4 class=" "><%= subreddit.title %> </h4>
             <p style="opacity: .25;">By <%= subreddit.user.username %> </h5>
