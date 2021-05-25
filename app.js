@@ -13,6 +13,7 @@ const flash = require('connect-flash')
 const passport = require('passport')
 const passportLocal = require('passport-local')
 const {isAuth} = require('./utils/isAuth')
+const MongoDBStore = require("connect-mongo")
 
 const subredditRoutes = require('./routes/subreddits')
 const postRoutes = require('./routes/posts')
@@ -21,7 +22,7 @@ const commentRoutes = require('./routes/comments')
 
 const User = require('./models/user')
 
-
+const db_url = process.env.DB_URL
 
 const app = express()
 
@@ -48,15 +49,25 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 
 const sessionConfig = {
+    name: 'reddit_cookie',
     secret: 'thisisasecret',
     resave: false,
     saveUninitialized: true,
     cookie: {
         httpOnly: true,
+       // secure: true,
         //Expires in a week
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7
-    }
+    },
+    resave: false,
+    store: MongoDBStore.create({
+        mongoUrl: db_url,
+        secret: 'secret',
+        touchAfter: 24 * 60 * 60
+    }).on('error', () => {
+        console.log("ERROR")
+    })
 }  
 
 app.use(session(sessionConfig))
