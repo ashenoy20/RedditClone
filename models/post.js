@@ -10,7 +10,10 @@ const postSchema = new Schema({
         ref: 'User'
     }, 
     description: String,
-    image: String,
+    image: {
+        url: String, 
+        fileName: String
+    },
     comments: [
         {
             type: Schema.Types.ObjectId,

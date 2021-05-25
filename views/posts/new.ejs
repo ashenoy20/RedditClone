@@ -1,6 +1,6 @@
 <% layout('layouts/boilerplate') %> 
 <div class="container">
-  <form action="/subreddits/<%= id %>/posts" method="POST">
+  <form action="/subreddits/<%= id %>/posts" method="POST" enctype="multipart/form-data">
       <div class="mb-3">
         <label for="title" class="form-lab">Title</label>
         <input type="text" name="post[title]" class="form-control" id="title">
@@ -8,6 +8,13 @@
       <div class="mb-3">
         <label for="description" class="form-lab">Description</label>
         <textarea  class="form-control" name="post[description]" id="description" cols="5" rows="3"></textarea>
+      </div>
+      <div class="mb-3">
+        <label class="file-upload-button" for="image">
+          <input type="file" name="image" id="image" class="fileUpload">
+          <i class="material-icons">file_upload</i>
+          Image (Optional)
+      </label> 
       </div>
       <button type="submit" class="btn btn-info">Submit</button>
   </form>

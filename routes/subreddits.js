@@ -13,6 +13,7 @@ const upload = multer({storage})
 const router = express.Router()
 
 const validSubreddit = (req, res, next) => {
+    console.log(req.body)
     const { error } = subredditSchema.validate(req.body)
     if(error){
         const msg = error.details.map(el => el.message).join(',')
@@ -85,6 +86,10 @@ router.delete('/:id', isAuth, catchAsyncError(async (req, res) => {
                 $in: i.comments
             }
         })
+
+        if(i.image){
+            cloudinary.uploader.destroy(i.image.fileName)
+        }
     }
     cloudinary.uploader.destroy(subreddit.image.fileName)
     await Subreddit.findByIdAndDelete(id)

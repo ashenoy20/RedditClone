@@ -5,6 +5,7 @@ const Comment = require('../models/comments')
 const { commentSchema } = require('../validatorSchema')
 const ExpressError = require('../utils/ExpressError')
 const {isAuth} = require('../utils/isAuth')
+const { array } = require('joi')
 
 const router = express.Router({mergeParams: true})
 
@@ -29,5 +30,22 @@ router.post('/', isAuth, validComment, catchAsyncError(async (req, res) => {
     await comment.save()
     res.redirect(`/subreddits/${id}/posts/${Postid}`)
 }))
+
+router.delete('/:Commentid', isAuth, async (req, res) => {
+    const {id, Postid, Commentid} = req.params
+    const post = await Post.findById(Postid)
+    const target = await Comment.findById(Commentid)
+    const newCommentsArray = [];
+    for(let i = 0; i < post.comments.length; i++){
+        if(String(post.comments[i]) !== String(target._id)){
+            newCommentsArray.push(post.comments[i])
+        }
+    }
+    console.log(newCommentsArray)
+    post.comments = newCommentsArray
+    await Comment.findByIdAndDelete(Commentid)
+    await post.save()
+    res.redirect(`/subreddits/${id}/posts/${Postid}`)   
+})
 
 module.exports = router

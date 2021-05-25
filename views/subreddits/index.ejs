@@ -1,7 +1,9 @@
 <% layout('layouts/boilerplate') %> 
-
+    <div id="newSub" style="display: flex; justify-content: center; align-items: center;">
+        <a href="/subreddits/new" class="btn btn-warning">Create Subreddit</a>
+    </div>
 <% for(let subreddit of allSubreddits){ %> 
-    <div class='row'>
+    <div class='row' style="margin-top: 10px;">
       <div class="circle">
           <img src="<%= subreddit.image.url %> " alt="" class="circle-img">
       </div>
@@ -12,10 +14,7 @@
           <div class="explore-div" >
               <h1><a href="/subreddits/<%= subreddit._id %>">Visit this subreddit</a></h1>
           </div>
-          <div class="vertical-line"></div>
-          <div class="description-text">
-              <p><%= subreddit.description %> </p>
-          </div>
+          
       </div>  
     </div>   
 <% } %> 

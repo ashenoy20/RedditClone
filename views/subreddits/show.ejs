@@ -1,6 +1,6 @@
 <% layout('layouts/boilerplate') %> 
 
-
+<div class="container" >
     <div class="card-static" >
         <div style="height: 300px; background-image: url(<%=subreddit.image.url%>); border-radius: 25px 25px 0px 0px;"></div>
         <div class="card-description">
@@ -19,24 +19,34 @@
     </div>
       
     </div>
-    <div class="container">
+    
     <% for(let post of subreddit.posts){ %>
-        <div class="card-show">
-            <div class=" ">
-            <h5 class=" "><%= post.title %> </h5>
-            <strong><%= post.user.username %> </strong>
-            <p class=" "><%= post.description %> </p>
-            <% if (user && subreddit.user.equals(user)) { %>
-                <a href="/subreddits/<%= subreddit._id %>/posts/<%= post._id %>/edit" class="btn btn-info">Edit Post</a>
-                <form action="/subreddits/<%= subreddit._id %>/posts/<%= post._id %>?_method=DELETE" method="POST">
-                    <button class="btn btn-danger">Delete Post</button>
-                </form>
-            <% } %>
-            <a href="/subreddits/<%= subreddit._id %>/posts/<%= post._id %>">Go to post</a>
+        <div class="card-static">
+            <div id="post-container">
+                <div id="nameTitle">
+                    <h2><%= post.title %></h2>
+                    <strong id="username"><%= post.user.username %></strong>
+                </div>
+                <p><%= post.description %> </p>
+                <% if(post.image){ %>
+                    <div id="image-container">
+                        <img id="postImage" src="<%= post.image.url %> ">
+                    </div>  
+                <% } %>  
+                <div id="postButtons">
+                    <% if (user && subreddit.user.equals(user)) { %>
+                        <a href="/subreddits/<%= subreddit._id %>/posts/<%= post._id %>/edit" class="btn btn-info">Edit Post</a>
+                        <form action="/subreddits/<%= subreddit._id %>/posts/<%= post._id %>?_method=DELETE" method="POST">
+                            <button class="btn btn-danger">Delete Post</button>
+                        </form>
+                    <% } %>
+                    <a href="/subreddits/<%= subreddit._id %>/posts/<%= post._id %>" class="btn btn-success">Go to post</a>
+                </div>
             </div>
-        </div>
+        </div>   
     <% } %> 
 </div>
+   
 
 
 

@@ -95,18 +95,18 @@ app.use('/subreddits', subredditRoutes)
 
 app.use('/', authRoutes)
 
-
-
-app.all('*', (req, res, next) => {
+app.use('*', (req, res, next) => {
     next(new ExpressError('Web page not found', 404))
 })
 
 app.use((err, req, res, next) => {
     const {statusCode = 500} = err;
     if(!err.message) err.message = 'Oh No POGCHAMP, Something Went Vewy Wong'
-    req.flash('error', err.message)
-    res.status(statusCode).redirect('/subreddits')
+    if(statusCode != 404) req.flash('error', err.message)
+    res.status(statusCode).render('layouts/error', {err})
 })
+
+
 
 // Port Listener
 app.listen(8080, () => {

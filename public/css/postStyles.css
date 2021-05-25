@@ -1,0 +1,80 @@
+#postButtons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#post-container{
+   margin-top: 3%;
+   padding: 3%
+}
+
+
+#nameTitle{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between; 
+   margin-bottom: 1em;
+}
+
+#username{
+    opacity: .5;
+}
+
+#image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#postImage{
+    border-radius: 15px;
+    margin-bottom: 2%;
+}
+
+#comment-input{
+    display: flex;
+    flex-direction: row;
+    padding: 0% 3% 0% 0%;
+    margin-bottom: 2em;
+}
+
+#comment-textarea{
+    flex-grow: 5;
+    border-radius: 0px 0px 0px 25px;
+    height: 60px;
+    border: none;
+    outline: none;
+    
+}
+
+#comment-textarea:focus{
+    border: none;
+    outline: none;
+}
+
+#commentButton{
+    flex-grow: 1;
+    border-radius: 0px 0px 25px 0px;
+    outline: 0em;
+    background-color: #ffd369;
+    border: none;
+    outline: none;
+}
+
+#delButton{
+   background-color: #222831;
+   color: white;
+   opacity: 0.25;
+   text-decoration: solid;
+   font-size: xx-large;
+   border-color: #222831;
+   outline: none;
+   border: none;
+}
+
+
+#delButton:focus{
+    outline: none;
+    border: none;
+}

@@ -11,6 +11,10 @@ body {
     background-color:#393e46;
 }
 
+label {
+    color: #ffd369;
+}
+
 ::-webkit-scrollbar {
     width: 0px;  
     background: transparent; 
@@ -133,6 +137,28 @@ a, a:hover, a:focus, a:active {
     flex-direction: row;
     margin-bottom: 20px;
 }
+
+input[type="file"]{
+    display: none;
+}
+
+.file-upload-button{
+    padding: 1em 2em 1em 2em;
+    border: 1px solid #ffd369;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffd369;
+    color: black;
+
+}
+
+.file-upload-button:hover{
+    cursor: pointer;
+}
+
+
 
 
 
