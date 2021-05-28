@@ -22,11 +22,11 @@ const commentRoutes = require('./routes/comments')
 
 const User = require('./models/user')
 
-const db_url = process.env.DB_URL
+const db_url = process.env.DB_URL || 'mongodb://localhost:27017/reddit-clone'
 
 const app = express()
 
-mongoose.connect('mongodb://localhost:27017/reddit-clone', {
+mongoose.connect(db_url, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
@@ -47,15 +47,15 @@ app.use(express.urlencoded({extended:true}))
 app.use(methodOverride('_method'))
 app.use(express.static(path.join(__dirname, 'public')))
 
+const secret = process.env.SECRET || "devBACKUP"
 
 const sessionConfig = {
     name: 'reddit_cookie',
-    secret: 'thisisasecret',
+    secret: secret,
     resave: false,
     saveUninitialized: true,
     cookie: {
         httpOnly: true,
-       // secure: true,
         //Expires in a week
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7
@@ -63,7 +63,7 @@ const sessionConfig = {
     resave: false,
     store: MongoDBStore.create({
         mongoUrl: db_url,
-        secret: 'secret',
+        secret: secret,
         touchAfter: 24 * 60 * 60
     }).on('error', () => {
         console.log("ERROR")
@@ -119,9 +119,9 @@ app.use((err, req, res, next) => {
 
 
 
-// Port Listener
-app.listen(8080, () => {
-    console.log('LISTENING ON PORT 8080')
+const PORT = process.env.PORT || 8080
+app.listen(PORT, () => {
+    console.log(`LISTENING ON PORT ${PORT}`)
 })
 
 
