@@ -1,3 +1,5 @@
 # RedditClone
 
-Currently in development
+Complete
+
+Repository for the source code
